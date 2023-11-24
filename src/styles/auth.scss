@@ -1,0 +1,36 @@
+.auth {
+  background: url("../assets/authBg.png") center/cover no-repeat;
+  &__content {
+    padding: 200px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding-right: 400px;
+  }
+  &__subtitle {
+    color: var(--Black, #111);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    color: #111;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 110%;
+    letter-spacing: -2.4px;
+    margin: 12px 0 32px;
+    span {
+      color: var(--Accent, #7535FC);
+    }
+  }
+}

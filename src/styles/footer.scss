@@ -1,0 +1,12 @@
+.footer {
+  &__content {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ABA8AD;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+  }
+}

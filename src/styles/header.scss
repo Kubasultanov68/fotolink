@@ -1,0 +1,28 @@
+.header {
+  padding: 12px 0;
+  background: rgba(255, 255, 255, 0.90);
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+  }
+
+  &__btn {
+    border-radius: 10px;
+    border: 1px solid #7535FC;
+    padding: 12px 24px;
+    background: none;
+    color: #7535FC;
+    font-size: 15px;
+    font-weight: 400;
+    &.active {
+      background: #7535FC;
+      color: #FFF;
+    }
+  }
+}
