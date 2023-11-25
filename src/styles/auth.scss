@@ -1,7 +1,7 @@
 .auth {
   background: url("../assets/authBg.png") center/cover no-repeat;
   &__content {
-    padding: 200px 0;
+    padding: 300px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -10,7 +10,7 @@
   &__info {
     display: flex;
     flex-direction: column;
-    padding-right: 400px;
+    width: 50%;
   }
   &__subtitle {
     color: var(--Black, #111);
