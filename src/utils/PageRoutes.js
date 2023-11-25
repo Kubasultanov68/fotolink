@@ -4,6 +4,7 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import {useEffect} from "react";
 import Auth from "../pages/auth/Auth";
+import ResetPassword from "../pages/auth/ResetPassword";
 
 export default function  PageRoutes () {
     const routes = useRoutes([
@@ -18,8 +19,16 @@ export default function  PageRoutes () {
                 {
                     path: 'register',
                     element: <Register/>
+                },
+                {
+                    path: 'reset-password',
+                    element: <ResetPassword/>
                 }
             ]
+        },
+        {
+            path: '/privacy-policy',
+            element: '/privacy-policy будет'
         }
     ])
 
