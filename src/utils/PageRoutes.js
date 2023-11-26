@@ -7,6 +7,9 @@ import Auth from "../pages/auth/Auth";
 import ResetPassword from "../pages/auth/ResetPassword";
 
 export default function  PageRoutes () {
+
+
+
     const routes = useRoutes([
         {
             path: '/auth/',

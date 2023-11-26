@@ -39,7 +39,11 @@ const Login = () => {
                 <div className="form__list">
                     <div className="form__item">
                         <label>Логин</label>
-                        <input type="text" placeholder='Введите ваш логин'/>
+                        <input
+                            type="text"
+                            placeholder='Введите ваш логин'
+                            className='form__item-input error'
+                        />
                         {/*<p className="form__item-error"></p>*/}
                     </div>
                     <div className="form__item">
