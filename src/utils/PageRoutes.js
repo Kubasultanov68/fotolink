@@ -5,6 +5,7 @@ import Register from "../pages/auth/Register";
 import {useEffect} from "react";
 import Auth from "../pages/auth/Auth";
 import ResetPassword from "../pages/auth/ResetPassword";
+import {useSelector} from "react-redux";
 
 export default function  PageRoutes () {
 
@@ -32,9 +33,13 @@ export default function  PageRoutes () {
         {
             path: '/privacy-policy',
             element: '/privacy-policy будет'
+        },
+        {
+            path: '/',
+            element: 'home будет'
         }
     ])
-    const user = {};
+    const {user} = useSelector(store => store.auth)
 
     const navigate = useNavigate()
 

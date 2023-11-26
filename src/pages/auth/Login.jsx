@@ -1,10 +1,14 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useMediaQuery} from "@mui/material";
 import {BeatLoader} from "react-spinners";
+import {useDispatch, useSelector} from "react-redux";
+import * as Auth from "../../features/slices/auth";
 
 const Login = () => {
+
+    const {user, isLoading} = useSelector(store => store.auth)
 
     const {
         handleSubmit,
@@ -18,14 +22,26 @@ const Login = () => {
         defaultValues: {
             userName: '',
             password: '',
-        }
+        },
     })
 
-    const onSubmit = (values) => {
-        console.log(values)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const onSubmit = async (values) => {
+        const {payload} = await dispatch(Auth.login(values))
+        if (payload?.response?.data) {
+            setError(payload.response.data.input, {type: 'manual', message: payload.response.data.message})
+        }
     }
 
     const medium = useMediaQuery('(max-width:600px)');
+
+    React.useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [user])
 
     return (
         <div className={`form ${medium ? 'medium' : ''}`}>
@@ -35,24 +51,30 @@ const Login = () => {
             <p className="form__subtitle">
                 Войдите в аккаунт
             </p>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form__list">
                     <div className="form__item">
                         <label>Логин</label>
                         <input
                             type="text"
                             placeholder='Введите ваш логин'
-                            className='form__item-input error'
+                            className={`form__item-input ${errors?.userName?.message ? 'error' : ''}`}
+                            {...register('userName', {required: '*Обязательное'})}
                         />
-                        {/*<p className="form__item-error"></p>*/}
+                        <p className="form__item-error">{errors?.userName?.message}</p>
                     </div>
                     <div className="form__item">
                         <label>Пароль</label>
-                        <input type="text" placeholder='Введите пароль'/>
-                        {/*<p className="form__item-error"></p>*/}
+                        <input
+                            {...register('password', {required: '*Обязательное'})}
+                            type="text"
+                            placeholder='Введите пароль'
+                            className={`form__item-input ${errors?.password?.message ? 'error' : ''}`}
+                        />
+                        <p className="form__item-error">{errors?.password?.message}</p>
                     </div>
                 </div>
-                <button className="form__btn">
+                <button className="form__btn" type='submit'>
                     Войти
                 </button>
             </form>
@@ -64,10 +86,12 @@ const Login = () => {
                     Создать аккаунт?
                 </Link>
             </div>
-            <div className="form__loading">
+            {isLoading && (
+                <div className="form__loading">
 
-                <BeatLoader className='form__loading-icon' color="#7535FC" />
-            </div>
+                    <BeatLoader className='form__loading-icon' color="#7535FC" />
+                </div>
+            )}
         </div>
     );
 };

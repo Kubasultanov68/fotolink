@@ -17,6 +17,7 @@ const RegisterOne = ({page, setPage, register, handleSubmit, onSubmit, errors}) 
                             type="text"
                             placeholder='Укажите ваше имя'
                             {...register('firstName')}
+                            className='form__item-input'
                         />
                         {/*<p className="form__item-error"></p>*/}
                     </div>
@@ -26,6 +27,7 @@ const RegisterOne = ({page, setPage, register, handleSubmit, onSubmit, errors}) 
                             type="text"
                             placeholder='Укажите фамилию'
                             {...register('lastName')}
+                            className='form__item-input'
                         />
                         {/*<p className="form__item-error"></p>*/}
                     </div>
@@ -35,6 +37,7 @@ const RegisterOne = ({page, setPage, register, handleSubmit, onSubmit, errors}) 
                             type="email"
                             placeholder='Укажите вашу почту'
                             {...register('email')}
+                            className='form__item-input'
                         />
                         {/*<p className="form__item-error"></p>*/}
                     </div>
@@ -73,11 +76,16 @@ const RegisterTwo = ({page, setPage, register, defaultValues, errors, handleSubm
                     </div>
                     <div className="form__item">
                         <label>Пароль</label>
-                        <input type="password" {...register('password')} placeholder='Задайте пароль для входа'/>
+                        <input
+                            type="password"
+                            {...register('password')}
+                            placeholder='Задайте пароль для входа'
+                            className='form__item-input'
+                        />
                         {/*<p className="form__item-error"></p>*/}
                     </div>
                     <div className='form__item-checkbox'>
-                        <input type="checkbox" {...register('checkbox')}/>
+                        <input type="checkbox"  className='form__item-input' {...register('checkbox')}/>
                         <p>Я согласен с <Link to='/privacy-policy' className='form__item-checkbox-span'>политикой конфиденциальности</Link></p>
                     </div>
                 </div>

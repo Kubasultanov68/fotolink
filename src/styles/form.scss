@@ -9,6 +9,7 @@
     position: absolute;
     background: rgba(0, 0, 0, 0.80);
     opacity: 0.5;
+    border-radius: 10px;
     left: 0;
     top: 0;
     width: 100%;
@@ -47,12 +48,15 @@
       font-size: 12px;
       font-weight: 600;
     }
-    input {
+    &-input {
       border-radius: 10px;
       background: var(--BG, #F0EFF3);
       padding: 12px;
       border: none;
       outline-color: #7535FC;
+      &.error {
+        border: 2px solid red;
+      }
     }
     &-error {
       color: var(--Red, #FC3535);

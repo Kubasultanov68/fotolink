@@ -15,7 +15,7 @@ const ResetPasswordOne = ({page, setPage, errors, handleSubmit , register, onSub
                 <div className="form__list">
                     <div className="form__item">
                         <label>E-mail</label>
-                        <input {...register('email')} type="email" placeholder='Укажите вашу почту'/>
+                        <input  className='form__item-input' {...register('email')} type="email" placeholder='Укажите вашу почту'/>
                         {/*<p className="form__item-error"></p>*/}
                     </div>
                 </div>
@@ -52,7 +52,7 @@ const ResetPasswordTwo = ({page, setPage, errors, handleSubmit, register, onSubm
                 <div className="form__list">
                     <div className="form__item">
                         <label>Код подтверждения</label>
-                        <input type="number" {...register('resetCode')} placeholder='Ваш код'/>
+                        <input type="number"  className='form__item-input' {...register('resetCode')} placeholder='Ваш код'/>
                         {/*<p className="form__item-error"></p>*/}
                     </div>
                 </div>
@@ -97,7 +97,7 @@ const ResetPasswordThree = ({page, setPage, errors, handleSubmit, onSubmit, regi
                 <div className="form__list">
                     <div className="form__item">
                         <label>Новый пароль</label>
-                        <input type="password" {...register('newPassword')} placeholder='Ваш новый пароль'/>
+                        <input type="password"  className='form__item-input' {...register('newPassword')} placeholder='Ваш новый пароль'/>
                         {/*<p className="form__item-error"></p>*/}
                     </div>
                 </div>
