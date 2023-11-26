@@ -31,9 +31,7 @@ export default function  PageRoutes () {
             element: '/privacy-policy будет'
         }
     ])
-    const user = {
-        email: 'kuba'
-    }
+    const user = {};
 
     const navigate = useNavigate()
 
