@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 
 import { MdArrowBack } from "react-icons/md";
 import {useForm} from "react-hook-form";
+import {useMediaQuery} from "@mui/material";
+import {BeatLoader} from "react-spinners";
 
 const RegisterOne = ({page, setPage, register, handleSubmit, onSubmit, errors}) => {
     return (
@@ -130,6 +132,8 @@ const Register = () => {
         console.log(values)
     }
 
+    const medium = useMediaQuery('(min-width:600px)');
+
 
     return (
         <div className='form'>
@@ -162,6 +166,10 @@ const Register = () => {
                         defaultValues={defaultValues}
                     />
             }
+            {/*<div className="form__loading">*/}
+
+            {/*    <BeatLoader className='form__loading-icon' color="#7535FC" />*/}
+            {/*</div>*/}
         </div>
     );
 };

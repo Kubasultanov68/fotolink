@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useForm} from "react-hook-form";
+import {useMediaQuery} from "@mui/material";
+import {BeatLoader} from "react-spinners";
 
 const Login = () => {
 
@@ -23,8 +25,10 @@ const Login = () => {
         console.log(values)
     }
 
+    const medium = useMediaQuery('(max-width:600px)');
+
     return (
-        <div className='form'>
+        <div className={`form ${medium ? 'medium' : ''}`}>
             <h3 className="form__title">
                 С возвращением!
             </h3>
@@ -55,6 +59,10 @@ const Login = () => {
                 <Link to='/auth/register' className='form__questions-link'>
                     Создать аккаунт?
                 </Link>
+            </div>
+            <div className="form__loading">
+
+                <BeatLoader className='form__loading-icon' color="#7535FC" />
             </div>
         </div>
     );

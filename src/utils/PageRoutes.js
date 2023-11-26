@@ -31,9 +31,12 @@ export default function  PageRoutes () {
             element: '/privacy-policy будет'
         }
     ])
+    const user = {
+        email: 'kuba'
+    }
 
     const navigate = useNavigate()
 
-    useEffect(() => {navigate('/auth/login')}, [])
+    useEffect(() => {if (!user) {navigate('/auth/login')}}, [])
     return routes
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {MdArrowBack} from "react-icons/md";
 import {useForm} from "react-hook-form";
+import {useMediaQuery} from "@mui/material";
+import {BeatLoader} from "react-spinners";
 
 const ResetPasswordOne = ({page, setPage, errors, handleSubmit , register, onSubmit}) => {
     return (
@@ -186,12 +188,18 @@ const ResetPassword = () => {
         }
     }
 
+    const medium = useMediaQuery('(max-width:600px)');
+
     return (
-        <div className='form'>
+        <div className={`form ${medium ? 'medium' : ''}`}>
             <h3 className="form__title">
                 Восстановление пароля
             </h3>
             {handlePage()}
+            {/*<div className="form__loading">*/}
+
+            {/*    <BeatLoader className='form__loading-icon' color="#7535FC" />*/}
+            {/*</div>*/}
         </div>
     );
 };
