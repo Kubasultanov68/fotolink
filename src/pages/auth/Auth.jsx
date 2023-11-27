@@ -23,11 +23,17 @@ const Auth = () => {
                                     <div className="auth__info">
 
                                         <p className="auth__subtitle">
-                                            Добро пожаловать в Фотолинк!
+                                            Добро пожаловать
+
+                                            {/*в Фотолинк*/}
+
+                                            !
                                         </p>
 
                                         <p className="auth__title">
-                                           <span>Социальная сеть</span> для фотографов
+                                           <span>Социальная сеть</span>
+
+                                            {/*для фотографов*/}
                                         </p>
 
 
