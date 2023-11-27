@@ -19,7 +19,7 @@ const Layout = () => {
                             </p>
 
                             <p className="auth__title">
-                                Первая <span>социальная сеть</span> для фотографов
+                                <span>Социальная сеть</span> для фотографов
                             </p>
 
 

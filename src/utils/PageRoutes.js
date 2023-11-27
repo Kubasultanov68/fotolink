@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import Auth from "../pages/auth/Auth";
 import ResetPassword from "../pages/auth/ResetPassword";
 import {useSelector} from "react-redux";
+import Home from "../pages/Home/Home";
 
 export default function  PageRoutes () {
 
@@ -36,7 +37,7 @@ export default function  PageRoutes () {
         },
         {
             path: '/',
-            element: 'home будет'
+            element: <Home/>
         }
     ])
     const {user} = useSelector(store => store.auth)

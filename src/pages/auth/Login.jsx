@@ -31,8 +31,10 @@ const Login = () => {
     const onSubmit = async (values) => {
         const {payload} = await dispatch(Auth.login(values))
         if (payload?.response?.data) {
-            setError(payload.response.data.input, {type: 'manual', message: payload.response.data.message})
+            return setError(payload.response.data.input, {type: 'manual', message: payload.response.data.message})
         }
+
+
     }
 
     const medium = useMediaQuery('(max-width:600px)');

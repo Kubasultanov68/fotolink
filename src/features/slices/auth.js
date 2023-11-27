@@ -39,6 +39,18 @@ export const me = createAsyncThunk('AUTH/ME', async ({token}, thunkAPI) => {
     }
 })
 
+export const reset = createAsyncThunk('AUTH/RESET', async (userData, thunkAPI) => {
+    try {
+
+        const {data} = await axios.post('/auth/reset', userData)
+        return data
+
+    } catch (e) {
+        console.log(e)
+        return thunkAPI.rejectWithValue(e)
+    }
+})
+
 
 const initialState = {
     user: null,
@@ -66,6 +78,7 @@ const authSlice = createSlice({
                 state.isLoading = false
                 state.user = payload.user
                 toast.success(payload.message)
+
             })
             .addCase(register.rejected, (state, {payload}) => {
                 state.isLoading = false
@@ -82,6 +95,17 @@ const authSlice = createSlice({
             .addCase(login.rejected, (state, {payload}) => {
                 state.isLoading = false
             })
+
+            .addCase(reset.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(reset.fulfilled, (state) => {
+                state.isLoading = false;
+            })
+            .addCase(reset.rejected, (state) => {
+                state.isLoading = false;
+            })
+
 
             .addCase(me.fulfilled, (state, {payload}) => {
                 state.user = payload.user

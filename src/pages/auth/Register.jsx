@@ -1,10 +1,12 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import { MdArrowBack } from "react-icons/md";
 import {useForm} from "react-hook-form";
 import {useMediaQuery} from "@mui/material";
 import {BeatLoader} from "react-spinners";
+import {useDispatch, useSelector} from "react-redux";
+import * as Auth from "../../features/slices/auth";
 
 const RegisterOne = ({page, setPage, register, handleSubmit, onSubmit, errors}) => {
     return (
@@ -19,27 +21,27 @@ const RegisterOne = ({page, setPage, register, handleSubmit, onSubmit, errors}) 
                             {...register('firstName')}
                             className='form__item-input'
                         />
-                        {/*<p className="form__item-error"></p>*/}
+                        <p className="form__item-error">{errors?.firstName?.message}</p>
                     </div>
                     <div className="form__item">
                         <label>Фамилия</label>
                         <input
                             type="text"
                             placeholder='Укажите фамилию'
-                            {...register('lastName')}
-                            className='form__item-input'
+                            className={`form__item-input ${errors?.lastName?.message ? 'error' : ''}`}
+                            {...register('lastName', {required: '*Обязательное'})}
                         />
-                        {/*<p className="form__item-error"></p>*/}
+                        <p className="form__item-error">{errors?.lastName?.message}</p>
                     </div>
                     <div className="form__item">
                         <label>E-mail</label>
                         <input
                             type="email"
                             placeholder='Укажите вашу почту'
-                            {...register('email')}
-                            className='form__item-input'
+                            className={`form__item-input ${errors?.email?.message ? 'error' : ''}`}
+                            {...register('email', {required: '*Обязательное'})}
                         />
-                        {/*<p className="form__item-error"></p>*/}
+                        <p className="form__item-error">{errors?.email?.message}</p>
                     </div>
                 </div>
                 <button className="form__btn" type='submit'
@@ -71,18 +73,23 @@ const RegisterTwo = ({page, setPage, register, defaultValues, errors, handleSubm
                 <div className="form__list">
                     <div className="form__item">
                         <label>Логин</label>
-                        <input type="text" {...register('userName')} placeholder='Придумайте логин'/>
-                        {/*<p className="form__item-error"></p>*/}
+                        <input
+                            type="text"
+                            placeholder='Введите ваш логин'
+                            className={`form__item-input ${errors?.userName?.message ? 'error' : ''}`}
+                            {...register('userName', {required: '*Обязательное'})}
+                        />
+                        <p className="form__item-error">{errors?.userName?.message}</p>
                     </div>
                     <div className="form__item">
                         <label>Пароль</label>
                         <input
-                            type="password"
-                            {...register('password')}
-                            placeholder='Задайте пароль для входа'
-                            className='form__item-input'
+                            {...register('password', {required: '*Обязательное'})}
+                            type="text"
+                            placeholder='Введите пароль'
+                            className={`form__item-input ${errors?.password?.message ? 'error' : ''}`}
                         />
-                        {/*<p className="form__item-error"></p>*/}
+                        <p className="form__item-error">{errors?.password?.message}</p>
                     </div>
                     <div className='form__item-checkbox'>
                         <input type="checkbox"  className='form__item-input' {...register('checkbox')}/>
@@ -112,6 +119,11 @@ const Register = () => {
 
     const [page, setPage] = React.useState(1)
 
+    const {user, isLoading} = useSelector(store => store.auth)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const {
         handleSubmit,
         register,
@@ -119,6 +131,7 @@ const Register = () => {
             errors,
             defaultValues
         },
+        setValue,
         setError,
     } = useForm({
         defaultValues: {
@@ -131,17 +144,42 @@ const Register = () => {
         }
     })
 
-    const onSubmitOne = ({firstName, lastName, email}) => {
-        console.log({firstName, lastName, email})
-        setPage(page + 1)
-    }
+    React.useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [user])
 
-    const onSubmitTwo = (values) => {
-        console.log(values)
+    const onSubmitOne = async ({firstName, lastName, email}) => {
+        const {payload} = await dispatch(Auth.register({firstName, lastName, email}))
+
+        if (payload?.response?.data?.input) {
+            return setError(payload.response.data.input, {type: 'manual', message: payload.response.data.message})
+        }
+
+        if (payload.email) {
+            Object.entries(payload).map(([key, value]) => {
+                setValue(key, value);
+            });
+            return setPage(page + 1)
+        }
+
+
+    };
+
+
+    const onSubmitTwo = async (values) => {
+        const {payload} = await dispatch(Auth.register(values))
+
+        if (payload?.response?.data?.input) {
+            return setError(payload.response.data.input, {type: 'manual', message: payload.response.data.message})
+        }
     }
 
     const medium = useMediaQuery('(min-width:600px)');
 
+
+    console.log(user)
 
     return (
         <div className='form'>
@@ -174,10 +212,12 @@ const Register = () => {
                         defaultValues={defaultValues}
                     />
             }
-            {/*<div className="form__loading">*/}
+            {isLoading && (
+                <div className="form__loading">
 
-            {/*    <BeatLoader className='form__loading-icon' color="#7535FC" />*/}
-            {/*</div>*/}
+                    <BeatLoader className='form__loading-icon' color="#7535FC" />
+                </div>
+            )}
         </div>
     );
 };

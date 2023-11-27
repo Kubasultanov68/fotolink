@@ -4,6 +4,9 @@ import {MdArrowBack} from "react-icons/md";
 import {useForm} from "react-hook-form";
 import {useMediaQuery} from "@mui/material";
 import {BeatLoader} from "react-spinners";
+import {useDispatch, useSelector} from "react-redux";
+import * as Auth from "../../features/slices/auth";
+import {toast} from "react-toastify";
 
 const ResetPasswordOne = ({page, setPage, errors, handleSubmit , register, onSubmit}) => {
     return (
@@ -12,12 +15,15 @@ const ResetPasswordOne = ({page, setPage, errors, handleSubmit , register, onSub
                 Введите E-mail указанный при регистрации
             </p>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form__list">
-                    <div className="form__item">
-                        <label>E-mail</label>
-                        <input  className='form__item-input' {...register('email')} type="email" placeholder='Укажите вашу почту'/>
-                        {/*<p className="form__item-error"></p>*/}
-                    </div>
+                <div className="form__item">
+                    <label>E-mail</label>
+                    <input
+                        type="email"
+                        placeholder='Укажите вашу почту'
+                        className={`form__item-input ${errors?.email?.message ? 'error' : ''}`}
+                        {...register('email', {required: '*Обязательное'})}
+                    />
+                    <p className="form__item-error">{errors?.email?.message}</p>
                 </div>
                 <button className="form__btn"
                         // onClick={() => setPage(page + 1)}
@@ -52,8 +58,13 @@ const ResetPasswordTwo = ({page, setPage, errors, handleSubmit, register, onSubm
                 <div className="form__list">
                     <div className="form__item">
                         <label>Код подтверждения</label>
-                        <input type="number"  className='form__item-input' {...register('resetCode')} placeholder='Ваш код'/>
-                        {/*<p className="form__item-error"></p>*/}
+                        <input
+                            type="text"
+                            placeholder='Введите ваш код'
+                            className={`form__item-input ${errors?.resetCode?.message ? 'error' : ''}`}
+                            {...register('resetCode', {required: '*Обязательное'})}
+                        />
+                        <p className="form__item-error">{errors?.resetCode?.message}</p>
                     </div>
                 </div>
                 <button className="form__btn" type='submit'
@@ -97,8 +108,13 @@ const ResetPasswordThree = ({page, setPage, errors, handleSubmit, onSubmit, regi
                 <div className="form__list">
                     <div className="form__item">
                         <label>Новый пароль</label>
-                        <input type="password"  className='form__item-input' {...register('newPassword')} placeholder='Ваш новый пароль'/>
-                        {/*<p className="form__item-error"></p>*/}
+                        <input
+                            type="text"
+                            placeholder='Введите новый пароль'
+                            className={`form__item-input ${errors?.newPassword?.message ? 'error' : ''}`}
+                            {...register('newPassword', {required: '*Обязательное'})}
+                        />
+                        <p className="form__item-error">{errors?.newPassword?.message}</p>
                     </div>
                 </div>
                 <button className="form__btn" type='submit'
@@ -127,6 +143,12 @@ const ResetPassword = () => {
 
     const [page, setPage] = React.useState(1)
 
+
+    const {user, isLoading} = useSelector(store => store.auth)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const {
         handleSubmit,
         register,
@@ -134,27 +156,46 @@ const ResetPassword = () => {
             errors,
             defaultValues
         },
+        setValue,
         setError,
     } = useForm({
         defaultValues: {
-            resetCode: '',
-            email: '',
-            newPassword: '',
+            userId: ''
         }
     })
 
-    const onSubmitOne = ({email}) => {
-        console.log({email})
+    const onSubmitOne = async ({email}) => {
+        const {payload} = await dispatch(Auth.reset({email}))
+
+        if (payload?.response?.data) {
+            return setError(payload.response.data.input, {type: 'manual', message: payload.response.data.message})
+        }
+
+        setValue('userId', payload.userId)
         setPage(page + 1)
     }
 
-    const onSubmitTwo = ({resetCode}) => {
-        console.log({resetCode})
+    const onSubmitTwo = async ({resetCode, userId}) => {
+        const {payload} = await dispatch(Auth.reset({userId, resetCode}))
+
+        if (payload?.response?.data) {
+            return setError(payload.response.data.input, {type: 'manual', message: payload.response.data.message})
+        }
+
+        setValue('userId', payload.userId)
         setPage(page + 1)
     }
 
-    const onSubmitThree = ({newPassword}) => {
-        console.log({newPassword})
+    const onSubmitThree = async ({newPassword, userId}) => {
+        const {payload} = await dispatch(Auth.reset({userId, newPassword}))
+
+        if (payload?.response?.data) {
+            return setError(payload.response.data.input, {type: 'manual', message: payload.response.data.message})
+        }
+
+        setValue('userId', payload.userId)
+        toast.success(payload.message)
+        navigate('/auth/login')
     }
 
     const handlePage = () => {
@@ -196,10 +237,12 @@ const ResetPassword = () => {
                 Восстановление пароля
             </h3>
             {handlePage()}
-            {/*<div className="form__loading">*/}
+            {isLoading && (
+                <div className="form__loading">
 
-            {/*    <BeatLoader className='form__loading-icon' color="#7535FC" />*/}
-            {/*</div>*/}
+                    <BeatLoader className='form__loading-icon' color="#7535FC" />
+                </div>
+            )}
         </div>
     );
 };

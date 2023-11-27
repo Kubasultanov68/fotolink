@@ -3,8 +3,10 @@
   background: #FFF;
   backdrop-filter: blur(5px);
   padding: 40px 24px;
-  min-width: 350px;
+  width: 350px;
   position: relative;
+  transition: height 0.3s;
+  height: auto;
   &__loading {
     position: absolute;
     background: rgba(0, 0, 0, 0.80);
@@ -15,11 +17,13 @@
     width: 100%;
     height: 100%;
     cursor: no-drop;
+    transition: 1s;
     &-icon {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      transition: 1s;
     }
   }
   &__title {
