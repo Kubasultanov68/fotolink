@@ -55,6 +55,18 @@ export default function  PageRoutes () {
                     path: 'active',
                     element: 'active'
                 },
+                {
+                    path: 'search',
+                    element: 'search'
+                },
+                {
+                    path: 'profile',
+                    element: 'profile'
+                },
+                {
+                    path: 'settings',
+                    element: 'settings'
+                },
 
             ]
         }
