@@ -37,7 +37,26 @@ export default function  PageRoutes () {
         },
         {
             path: '/',
-            element: <Home/>
+            element: <Layout/>,
+            children: [
+                {
+                    path: '',
+                    element: <Home/>
+                },
+                {
+                    path: 'subscriptions',
+                    element: 'subscriptions'
+                },
+                {
+                    path: 'messages',
+                    element: 'messages'
+                },
+                {
+                    path: 'active',
+                    element: 'active'
+                },
+
+            ]
         }
     ])
     const {user} = useSelector(store => store.auth)

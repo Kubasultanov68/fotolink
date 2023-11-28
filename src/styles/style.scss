@@ -7,13 +7,18 @@
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Inter", sans-serif;
-  transition: .5s all;
 }
 
 .container {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.block {
+  border-radius: 10px;
+  background: #FFF;
+  padding: 24px;
 }
 
 
@@ -32,3 +37,4 @@ button {
 @import "footer";
 @import "auth";
 @import "form";
+@import "sidebar";

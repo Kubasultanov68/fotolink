@@ -7,15 +7,14 @@ const Home = () => {
 
     return (
         <>
-            {user && (
-                <div>
-                    {
-                        Object.entries(user).map(([key, value], index) => (
-                            <h2 key={index}>{key}: {value}</h2>
-                        ))
-                    }
-                </div>
-            )}
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: 'calc(60% - (24px / 3))'
+            }}>
+
+
+            </div>
         </>
     );
 };
