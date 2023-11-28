@@ -1,6 +1,8 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import SubUsers from "./SubUsers/SubUsers";
+import Begin from "./Begin/Begin";
+import Post from "../../components/Post/Post";
 
 const Home = () => {
 
@@ -11,10 +13,15 @@ const Home = () => {
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
-                width: 'calc(60% - (24px / 3))'
+                width: 'calc(60% - (48px / 3))'
             }}>
-                <SubUsers/>
 
+                <SubUsers/>
+                <Begin/>
+
+                <div>
+                    <Post/>
+                </div>
             </div>
         </>
     );

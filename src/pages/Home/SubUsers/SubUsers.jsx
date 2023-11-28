@@ -4,7 +4,7 @@ import {Avatar} from "@mui/material";
 const UserItem = () => {
     return (
         <div className="subuser__item">
-            <Avatar />
+            <Avatar sx={{width: '50px', height: '50px'}} />
             <p className="subuser__item-name">
                 aleks
             </p>
@@ -24,6 +24,18 @@ const SubUsers = () => {
                 </button>
             </div>
             <div className="subuser__list">
+                <UserItem/>
+                <UserItem/>
+                <UserItem/>
+                <UserItem/>
+                <UserItem/>
+                <UserItem/>
+                <UserItem/>
+
+                <UserItem/>
+                <UserItem/>
+                <UserItem/>
+                <UserItem/>
                 <UserItem/>
                 <UserItem/>
                 <UserItem/>

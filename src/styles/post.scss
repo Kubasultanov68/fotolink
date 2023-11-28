@@ -1,0 +1,117 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 24px;
+  border-radius: 0px 0px 10px 10px;
+  background: #FFF;
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__author {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    &-column {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+    }
+    &-info {
+      display: flex;
+      column-gap: 8px;
+    }
+    &-name {
+      color: var(--Accent-dark, #5726BF);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    &-city {
+      color: var(--Gray, #ABA8AD);
+      text-overflow: ellipsis;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    &-time {
+      color: var(--Gray, #ABA8AD);
+      text-overflow: ellipsis;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+  &__saved {
+    background: none;
+    border: none;
+    font-size: 25px;
+  }
+  &__content {
+    img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    &-item {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--Accent, #7535FC);
+      color: var(--Black, #111);
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      background: none;
+    }
+  }
+  &__text {
+    color: #3E3E3E;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    border-radius: 29px;
+    background: var(--Accent-very-light, #F3EEFF);
+    color: #3E3E3E;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 8px 16px;
+    border: none;
+  }
+  &__spec {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    color: var(--Gray, #ABA8AD);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

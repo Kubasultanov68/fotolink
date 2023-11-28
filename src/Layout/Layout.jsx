@@ -12,7 +12,7 @@ const Layout = () => {
                 <Outlet/>
                 <div style={{
                     height: '500px'
-                }} className='sidebar'></div>
+                }} className='sidebar s'></div>
             </div>
 
 
