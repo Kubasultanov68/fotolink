@@ -78,6 +78,8 @@ const authSlice = createSlice({
                 state.isLoading = false
                 state.user = payload.user
                 toast.success(payload.message)
+                localStorage.setItem('token', payload.token)
+
 
             })
             .addCase(register.rejected, (state, {payload}) => {
@@ -91,6 +93,7 @@ const authSlice = createSlice({
                 state.isLoading = false
                 state.user = payload.user
                 toast.success(payload.message)
+                localStorage.setItem('token', payload.token)
             })
             .addCase(login.rejected, (state, {payload}) => {
                 state.isLoading = false

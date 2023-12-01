@@ -3,12 +3,21 @@ import Header from "../../Layout/Header/Header";
 import {Outlet, useLocation} from "react-router-dom";
 import Footer from "../../Layout/Footer/Footer";
 import {useMediaQuery} from "@mui/material";
+import {useDispatch, useSelector} from "react-redux";
+import * as auth from '../../features/slices/auth'
 
 const Auth = () => {
 
     const {pathname} = useLocation()
+    const dispatch = useDispatch()
+    const {user} = useSelector(store => store.auth)
 
     const medium = useMediaQuery('(min-width:900px)');
+
+    React.useEffect(() => {
+
+            dispatch(auth.me({token: localStorage.getItem('token')}))
+    }, [])
 
     return (
         <>
