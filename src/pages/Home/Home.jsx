@@ -21,6 +21,9 @@ const Home = () => {
 
                 <div>
                     <Post/>
+                    <Post/>
+                    <Post/>
+                    <Post/>
                 </div>
             </div>
         </>

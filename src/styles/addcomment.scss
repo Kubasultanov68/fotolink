@@ -1,0 +1,20 @@
+.addcomment {
+  display: flex;
+  align-items: center;
+  &__input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    background: var(--BG, #F0EFF3);
+    border: none;
+    outline-color: #7535FC;
+  }
+  &__btn {
+    width: 42px;
+    height: auto;
+    padding: 10px 5px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background: var(--Gray-light, #DAD4E4);
+  }
+}

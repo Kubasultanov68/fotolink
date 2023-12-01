@@ -3,6 +3,7 @@ import {CiBookmark, CiHeart} from "react-icons/ci";
 import {Avatar} from "@mui/material";
 import Comment from "../Comment/Comment";
 import {FaRegBookmark, FaRegComment, FaRegHeart} from "react-icons/fa";
+import PostAddComment from "./PostAddComment/PostAddComment";
 
 const PostAuthor = () => {
     return (
@@ -28,8 +29,13 @@ const PostAuthor = () => {
     )
 }
 
-const PostBtn = ({Icon, num}) => {
-  return (
+const PostBtn = ({Icon, num, open, setOpen}) => {
+  return open && setOpen ?  (
+      <button className='post__btn' onClick={() => setOpen(!open)}>
+          <Icon/>
+          {num}
+      </button>
+  ) : (
       <button className='post__btn'>
           <Icon/>
           {num}
@@ -38,6 +44,9 @@ const PostBtn = ({Icon, num}) => {
 };
 
 const Post = () => {
+
+    const [isCommentOpen, setIsCommentOpen] =  React.useState(true)
+
     return (
         <div className='post'>
             <div className='post__top'>
@@ -81,7 +90,7 @@ const Post = () => {
             <div className="post__bottom">
                 <div className="post__btns">
                     <PostBtn Icon={FaRegHeart} num={12}/>
-                    <PostBtn Icon={FaRegComment} num={12}/>
+                    <PostBtn Icon={FaRegComment} num={12} open={isCommentOpen} setOpen={setIsCommentOpen}/>
                     <PostBtn Icon={FaRegBookmark} num={12}/>
                 </div>
                 <p className="post__spec">
@@ -97,9 +106,15 @@ const Post = () => {
                 </p>
             </div>
             <hr className="post__hr"/>
-            <div className="post__comments">
+            <div className={`post__comments ${isCommentOpen ? 'open' : ''}`}>
                 <Comment/>
+                <Comment/>
+                <Comment/>
+                <p style={{marginLeft: '60px', cursor: 'pointer'}} className="comment__btn">
+                    Показать еще комментарии
+                </p>
             </div>
+            <PostAddComment/>
         </div>
     );
 };
