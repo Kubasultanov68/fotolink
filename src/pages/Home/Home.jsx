@@ -19,7 +19,7 @@ const Home = () => {
                 <SubUsers/>
                 <Begin/>
 
-                <div>
+                <div style={{display: 'flex', flexDirection: "column", rowGap: '24px'}}>
                     <Post/>
                     <Post/>
                     <Post/>

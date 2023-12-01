@@ -4,6 +4,7 @@ import {Avatar} from "@mui/material";
 import Comment from "../Comment/Comment";
 import {FaRegBookmark, FaRegComment, FaRegHeart} from "react-icons/fa";
 import PostAddComment from "./PostAddComment/PostAddComment";
+import {MdArrowBack} from "react-icons/md";
 
 const PostAuthor = () => {
     return (
@@ -30,7 +31,7 @@ const PostAuthor = () => {
 }
 
 const PostBtn = ({Icon, num, open, setOpen}) => {
-  return open && setOpen ?  (
+  return setOpen ?  (
       <button className='post__btn' onClick={() => setOpen(!open)}>
           <Icon/>
           {num}
@@ -43,12 +44,22 @@ const PostBtn = ({Icon, num, open, setOpen}) => {
   )
 };
 
-const Post = () => {
+const Post = ({modal}) => {
 
-    const [isCommentOpen, setIsCommentOpen] =  React.useState(true)
+    const [isCommentOpen, setIsCommentOpen] =  React.useState(false)
 
     return (
         <div className='post'>
+            {modal && (
+                <div className='postmodal__top'>
+                    <button className='form__questions-link'>
+                        <MdArrowBack className='form__questions-link_logo'/>
+                        Назад
+
+                    </button>
+                    <p className="postmodal__title">{modal}</p>
+                </div>
+            )}
             <div className='post__top'>
                 <PostAuthor/>
                 <div>
