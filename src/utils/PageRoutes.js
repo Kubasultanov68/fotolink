@@ -8,6 +8,8 @@ import ResetPassword from "../pages/auth/ResetPassword";
 import {useSelector} from "react-redux";
 import Home from "../pages/Home/Home";
 import UserProfile from "../pages/UserProfile/UserProfile";
+import Search from "../pages/Search/Search";
+import Subscriptions from "../pages/Subscriptions/Subscriptions";
 
 export default function  PageRoutes () {
 
@@ -46,7 +48,7 @@ export default function  PageRoutes () {
                 },
                 {
                     path: 'subscriptions',
-                    element: 'subscriptions'
+                    element: <Subscriptions/>
                 },
                 {
                     path: 'messages',
@@ -58,7 +60,7 @@ export default function  PageRoutes () {
                 },
                 {
                     path: 'search',
-                    element: 'search'
+                    element: <Search/>
                 },
                 {
                     path: 'profile',

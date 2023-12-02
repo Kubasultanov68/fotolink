@@ -1,7 +1,7 @@
 import React from 'react';
 import {Avatar} from "@mui/material";
 
-const UserItem = () => {
+export const UserItem = () => {
     return (
         <div className="subuser__item">
             <Avatar sx={{width: '50px', height: '50px'}} />

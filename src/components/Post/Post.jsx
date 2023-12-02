@@ -46,7 +46,7 @@ const PostBtn = ({Icon, num, open, setOpen}) => {
 
 const Post = ({modal}) => {
 
-    const [isCommentOpen, setIsCommentOpen] =  React.useState(true)
+    const [isCommentOpen, setIsCommentOpen] =  React.useState(false)
 
     return (
         <div className='post'>

@@ -16,5 +16,9 @@
     border-radius: 0 5px 5px 0;
     border: none;
     background: var(--Gray-light, #DAD4E4);
+    &.fio {
+      background: #7535FC;
+      color: #FFFFFF;
+    }
   }
 }
