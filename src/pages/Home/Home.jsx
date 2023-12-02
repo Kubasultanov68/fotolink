@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 import SubUsers from "./SubUsers/SubUsers";
 import Begin from "./Begin/Begin";
 import Post from "../../components/Post/Post";
+import Modal from "../../components/modal/ModalPost";
 
 const Home = () => {
 
