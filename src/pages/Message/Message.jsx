@@ -7,7 +7,7 @@ const Message = () => {
     return (
         <div style={{
             display: 'flex',
-            width: 'calc(60% - (48px / 3))'
+            width: 'calc(80% - (48px / 4))',
         }} className=''>
             <div className="companions">
                 <Companion/>

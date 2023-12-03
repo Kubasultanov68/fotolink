@@ -27,6 +27,9 @@ const Home = () => {
                     <Post/>
                 </div>
             </div>
+            <div style={{
+                height: '500px'
+            }} className='sidebar s'></div>
         </>
     );
 };

@@ -154,6 +154,9 @@ const UserProfile = () => {
             {selectedPost && (
                 <Modal onClose={closeModal} post={selectedPost}/>
             )}
+            <div style={{
+                height: '500px'
+            }} className='sidebar s'></div>
         </>
     );
 };

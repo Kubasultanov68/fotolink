@@ -134,7 +134,9 @@ const Search = () => {
                 }
 
             </div>
-
+            <div style={{
+                height: '500px'
+            }} className='sidebar s'></div>
         </>
     );
 };

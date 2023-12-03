@@ -10,9 +10,6 @@ const Layout = () => {
             <div className="container layout">
                 <SideBar/>
                 <Outlet/>
-                <div style={{
-                    height: '500px'
-                }} className='sidebar s'></div>
             </div>
 
 
