@@ -12,10 +12,10 @@
   row-gap: 4px;
   border-radius: 10px;
   background: #FFF;
-  padding: 24px 0px;
   width: calc(20% - (48px / 3));
   height: 600px;
   overflow: auto;
+  padding: 24px;
   &__logo {
 
   }
@@ -34,15 +34,33 @@
     font-weight: 400;
     line-height: normal;
     border: none;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 10px;
+    &-text {
+      span {
+        margin-left: 8px;
+        padding: 2px 8px;
+        border-radius: 50%;
+        background: var(--Accent, #7535FC);
+        color: #FFFFFF;
+      }
+    }
     &:hover {
-      border-radius: 0px 10px 10px 0px;
       background: var(--Accent-very-light, #F3EEFF);
     }
     &.active {
       color: var(--White, #FFF);
       background: var(--Accent, #7535FC);
       transition: 0.3s;
+    }
+    &.active  &-text {
+      span {
+        margin-left: 8px;
+        padding: 2px 8px;
+        border-radius: 50%;
+        background: #FFFFFF;
+        color: #5726BF;
+        font-weight: 500;
+      }
     }
   }
 

@@ -9,7 +9,7 @@ import {FaHeart, FaRegHeart, FaRegUser, FaSearch, FaUser} from "react-icons/fa";
 import {AiFillMessage, AiOutlineMessage} from "react-icons/ai";
 import {CiSearch} from "react-icons/ci";
 
-const SideBarLink = ({to, Icon1, Icon2, text}) => {
+const SideBarLink = ({to, Icon1, Icon2, text, span}) => {
 
     const {pathname} = useLocation()
 
@@ -24,6 +24,9 @@ const SideBarLink = ({to, Icon1, Icon2, text}) => {
             }
             <p className='sidebar__link-text'>
                 {text}
+                {span && (
+                    <span>{span}</span>
+                )}
             </p>
         </NavLink>
     )
@@ -38,7 +41,7 @@ const SideBar = () => {
 
             <SideBarLink text='Главная' Icon1={IoHome} Icon2={IoHomeOutline} to='/'/>
             <SideBarLink text='Подписки' Icon1={HiMiniUsers} Icon2={HiOutlineUsers} to='/subscriptions'/>
-            <SideBarLink text='Сообщения (2)' Icon1={AiFillMessage} Icon2={FiMessageCircle} to='/messages'/>
+            <SideBarLink text='Сообщения' span={2} Icon1={AiFillMessage} Icon2={FiMessageCircle} to='/messages'/>
             <SideBarLink text='Активность' Icon2={FaRegHeart} Icon1={FaHeart} to='/active'/>
             <SideBarLink text='Поиск' Icon2={CiSearch} Icon1={FaSearch} to='/search'/>
             <SideBarLink text='Мой профиль' Icon2={FaRegUser} Icon1={FaUser} to='/profile'/>

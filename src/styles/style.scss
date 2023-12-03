@@ -24,7 +24,38 @@
 
 body {
   background: #F3F3F3;
+  &::-webkit-scrollbar {
+    width: 5px;
+    background: #ABA8AD;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 5px;
+    border-radius: 2px;
+    background: #5726BF;
+  }
 }
+
+.page-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Высота прогресс-бара */
+  background-color: #eee; /* Цвет фона прогресс-бара */
+}
+
+.page-progress::-webkit-progress-bar {
+  background-color: #eee; /* Цвет фона прогресс-бара в браузерах на основе WebKit (Chrome, Safari) */
+}
+
+.page-progress::-webkit-progress-value {
+  background-color: #7535FC; /* Цвет заполненной части прогресс-бара в браузерах на основе WebKit */
+}
+
+.page-progress::-moz-progress-bar {
+  background-color: #007bff; /* Цвет заполненной части прогресс-бара в браузерах на основе Gecko (Firefox) */
+}
+
 
 button {
   cursor: pointer;
