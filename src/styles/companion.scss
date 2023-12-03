@@ -1,0 +1,94 @@
+.companions {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding-top: 5px;
+  overflow: auto;
+  padding-bottom: 24px;
+  max-height: 600px;
+  &__item {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    background: #FFFFFF;
+    &:hover {
+      background: var(--Accent-very-light, #F3EEFF);
+    }
+    &-right {
+      display: flex;
+      flex-direction: column;
+      text-align: end;
+      row-gap: 6px;
+    }
+    &-left {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      flex: 1;
+      overflow: hidden;
+
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+      width: 100%;
+    }
+    &-username {
+      color: var(--Accent-dark, #5726BF);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1; /* Указывает максимальное количество отображаемых строк */
+      -webkit-box-orient: vertical;
+    }
+    &-message {
+      color: #3E3E3E;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1; /* Указывает максимальное количество отображаемых строк */
+      -webkit-box-orient: vertical;
+
+      &::before {
+        content: '...';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding-left: 12px;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), #FFFFFF 50%);
+      }
+    }
+    &-data {
+      overflow: hidden;
+      color: var(--Gray, #ABA8AD);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    &-count {
+      border-radius: 50%;
+      background: #7535FC;
+      color: var(--White, #FFF);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

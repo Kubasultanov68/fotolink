@@ -10,6 +10,7 @@ import Home from "../pages/Home/Home";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import Search from "../pages/Search/Search";
 import Subscriptions from "../pages/Subscriptions/Subscriptions";
+import Message from "../pages/Message/Message";
 
 export default function  PageRoutes () {
 
@@ -52,7 +53,7 @@ export default function  PageRoutes () {
                 },
                 {
                     path: 'messages',
-                    element: 'messages'
+                    element: <Message/>
                 },
                 {
                     path: 'active',
