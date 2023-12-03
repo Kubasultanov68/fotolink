@@ -8,6 +8,13 @@
   overflow: auto;
   padding-bottom: 24px;
   max-height: 600px;
+  &::-webkit-scrollbar {
+    width: 5px;
+    background: #DAD4E4;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #5726BF;
+  }
   &__item {
     padding: 16px 24px;
     display: flex;
@@ -102,6 +109,13 @@
   overflow: auto;
   max-height: 600px;
   position: relative;
+  &::-webkit-scrollbar {
+    width: 5px;
+    background: #DAD4E4;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #5726BF;
+  }
   .addcomment {
     position: sticky;
     bottom: 0;
