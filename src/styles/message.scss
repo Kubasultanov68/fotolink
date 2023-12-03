@@ -92,3 +92,53 @@
     }
   }
 }
+.message {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 5px 10px 0;
+  overflow: auto;
+  max-height: 600px;
+  position: relative;
+  .addcomment {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  &__item {
+    display: flex;
+    justify-content: left;
+    padding: 4px 0;
+    span {
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--Accent-very-light, #F3EEFF);
+      color: var(--Black, #111);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      width: 60%;
+
+    }
+    &.data {
+      display: flex;
+      justify-content: center;
+      span {
+        width: auto;
+        border-radius: 29px;
+        background: var(--Accent-very-light, #F3EEFF);
+      }
+    }
+    &.user {
+      justify-content: end;
+      span {
+        background: #7535FC;
+        color: var(--White, #FFF);
+      }
+    }
+  }
+}
