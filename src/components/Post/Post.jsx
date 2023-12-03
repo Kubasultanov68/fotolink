@@ -5,6 +5,7 @@ import Comment from "../Comment/Comment";
 import {FaRegBookmark, FaRegComment, FaRegHeart} from "react-icons/fa";
 import PostAddComment from "./PostAddComment/PostAddComment";
 import {MdArrowBack} from "react-icons/md";
+import {generateFakeData} from "../../pages/UserProfile/UserProfile";
 
 const PostAuthor = () => {
     return (
@@ -71,9 +72,9 @@ const Post = ({modal}) => {
                 </div>
             </div>
             <div className='post__content'>
-                <img
-                    src="https://img.freepik.com/premium-photo/vintage-woman-abstract-painting-digital-painting-artwork_743855-1918.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699315200&semt=ais"
-                    alt=""/>
+                {generateFakeData(4).map((_, index) => (
+                    <img key={index} src="https://img.freepik.com/premium-photo/vintage-woman-abstract-painting-digital-painting-artwork_743855-1918.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699315200&semt=ais" alt=""/>
+                ))}
             </div>
             <div className="post__tags">
                 <button className="post__tags-item">
