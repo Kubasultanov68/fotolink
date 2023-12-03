@@ -73,7 +73,9 @@ const Post = ({modal}) => {
             </div>
             <div className='post__content'>
                 {generateFakeData(4).map((_, index) => (
-                    <img key={index} src="https://img.freepik.com/premium-photo/vintage-woman-abstract-painting-digital-painting-artwork_743855-1918.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1699315200&semt=ais" alt=""/>
+                    <img key={index}
+                         src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg'
+                         alt=""/>
                 ))}
             </div>
             <div className="post__tags">
