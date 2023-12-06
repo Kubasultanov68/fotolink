@@ -2,7 +2,7 @@ import React from 'react';
 import {CiBookmark, CiHeart} from "react-icons/ci";
 import {Avatar} from "@mui/material";
 import Comment from "../Comment/Comment";
-import {FaRegBookmark, FaRegComment, FaRegHeart} from "react-icons/fa";
+import {FaCommentDots, FaRegBookmark, FaRegComment, FaRegHeart} from "react-icons/fa";
 import PostAddComment from "./PostAddComment/PostAddComment";
 import {MdArrowBack} from "react-icons/md";
 import {generateFakeData} from "../../pages/UserProfile/UserProfile";
@@ -33,7 +33,7 @@ const PostAuthor = () => {
 
 const PostBtn = ({Icon, num, open, setOpen}) => {
   return setOpen ?  (
-      <button className='post__btn' onClick={() => setOpen(!open)}>
+      <button className={`post__btn ${open ? 'active' : ''}`} onClick={() => setOpen(!open)}>
           <Icon/>
           {num}
       </button>
@@ -104,7 +104,7 @@ const Post = ({modal}) => {
             <div className="post__bottom">
                 <div className="post__btns">
                     <PostBtn Icon={FaRegHeart} num={12}/>
-                    <PostBtn Icon={FaRegComment} num={12} open={isCommentOpen} setOpen={setIsCommentOpen}/>
+                    <PostBtn Icon={isCommentOpen ? FaCommentDots : FaRegComment} num={12} open={isCommentOpen} setOpen={setIsCommentOpen}/>
                     <PostBtn Icon={FaRegBookmark} num={12}/>
                 </div>
                 <p className="post__spec">

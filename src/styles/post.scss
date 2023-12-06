@@ -112,6 +112,9 @@
     line-height: normal;
     padding: 8px 16px;
     border: none;
+    &.active {
+      background: #D0BCFF;
+    }
   }
   &__spec {
     display: flex;
