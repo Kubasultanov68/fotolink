@@ -3,8 +3,7 @@
   background: white;
   position: fixed;
   width: 100%;
-  z-index: 588;
-  opacity: 100;
+  z-index: 1;
   &__nav {
     display: flex;
     align-items: center;
@@ -18,16 +17,22 @@
 
   &__btn {
     border-radius: 10px;
-    border: 1px solid #7535FC;
+    border: 2px solid #7535FC;
     padding: 12px 24px;
     background: none;
     color: #7535FC;
     font-size: 15px;
     font-weight: 400;
     transition: .5s all;
+    &:hover {
+      border-radius: 10px;
+      background: #f1f1f1;
+      transition: .5s all;
+    }
     &.active {
       transition: .5s all;
       background: #7535FC;
+
       color: #FFF;
       &:hover {
         background: var(--Accent-dark, #5726BF);

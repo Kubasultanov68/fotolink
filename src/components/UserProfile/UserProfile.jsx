@@ -1,7 +1,7 @@
 import React from 'react';
 import {Avatar} from "@mui/material";
 import {CiBookmark, CiHeart} from "react-icons/ci";
-import Modal from "../../components/modal/ModalPost";
+import Modal from "../modal/ModalPost";
 
 export const generateFakeData = (count) => {
     const fakeData = [];
@@ -22,7 +22,7 @@ export const generateFakeData = (count) => {
 
 const fakeArray = generateFakeData(10);
 
-const UserProfile = () => {
+const UserProfile = ({user}) => {
 
     const [pageList, setPageList] = React.useState('post')
 
@@ -41,13 +41,22 @@ const UserProfile = () => {
         setSelectedPost(null);
     };
 
+    if (!user) {
+        return (<p>not user</p>)
+    }
+
 
     return (
         <>
             <div className='profile'>
                 <div className="profile__bg">
                     <img className='profile__bg-img' src="https://i0.wp.com/spartansboxing.com/wp-content/uploads/2023/08/Mike-Tyson.png?fit=1920%2C1080&ssl=1" alt=""/>
-                    <Avatar className='profile__bg-avatar' sx={{width: '223px', height: '223px'}}/>
+                    <Avatar
+                        className='profile__bg-avatar'
+                        src={user.avatarUrl}
+                        sx={{width: '223px', height: '223px'}}
+
+                    />
                 </div>
                 <div className="profile__content">
                     <div className="profile__begin">
@@ -62,10 +71,10 @@ const UserProfile = () => {
                         </div>
                     </div>
                     <h2 className="profile__username">
-                        Denis_Armed
+                        {user.userName}
                     </h2>
                     <p className="profile__fio">
-                        Денис Васильев
+                        {user.firstName} {user.lastName}
                     </p>
                     <p className="profile__profession">
                         📷 Свадебный фотограф Москва | КМС по бегу | Папа двух красавиц

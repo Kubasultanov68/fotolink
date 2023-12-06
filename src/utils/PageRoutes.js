@@ -7,10 +7,11 @@ import Auth from "../pages/auth/Auth";
 import ResetPassword from "../pages/auth/ResetPassword";
 import {useSelector} from "react-redux";
 import Home from "../pages/Home/Home";
-import UserProfile from "../pages/UserProfile/UserProfile";
+import UserProfile from "../components/UserProfile/UserProfile";
 import Search from "../pages/Search/Search";
 import Subscriptions from "../pages/Subscriptions/Subscriptions";
 import Message from "../pages/Message/Message";
+import Profile from "../pages/Profile/Profile";
 
 export default function  PageRoutes () {
 
@@ -65,7 +66,7 @@ export default function  PageRoutes () {
                 },
                 {
                     path: 'profile',
-                    element: <UserProfile/>
+                    element: <Profile/>
                 },
                 {
                     path: 'settings',

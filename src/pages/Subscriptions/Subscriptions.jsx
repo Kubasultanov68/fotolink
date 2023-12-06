@@ -1,5 +1,5 @@
 import React from 'react';
-import {generateFakeData} from "../UserProfile/UserProfile";
+import {generateFakeData} from "../../components/UserProfile/UserProfile";
 import {SearchUser} from "../Search/Search";
 
 const Subscriptions = () => {

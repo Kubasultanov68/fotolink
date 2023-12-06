@@ -41,9 +41,9 @@ const Lheader = () => {
         <header className='header'>
             <div className="container">
                 <nav className="header__nav">
-                    <h1 className="header__logo">
+                    <Link to='/' className="header__logo">
                         <img src={headerLogo} alt="Logo"/>
-                    </h1>
+                    </Link>
                     <Avatar
                         id="basic-button"
                         aria-controls={open ? 'basic-menu' : undefined}
