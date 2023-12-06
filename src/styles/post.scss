@@ -124,16 +124,17 @@
     line-height: normal;
   }
   &__comments {
-    padding: 24px 0;
     flex-direction: column;
+    overflow: hidden;  /* Скрыть контент, когда комментарии закрыты */
+    max-height: 0;  /* Начальное состояние: комментарии закрыты */
+    transition: max-height 1s ease;  /* Применить переход к свойству высоты */
     row-gap: 24px;
-    height: 0;
-    transition: 1s;
-    display: none;
+    padding: 0;
+    display: flex;
+
     &.open {
-      display: flex;
-      height: auto;
-      transition: 1s;
+      max-height: 500px;  /* Конечное состояние: комментарии открыты */
+      transition: max-height 1s ease;
     }
   }
 }
