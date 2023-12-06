@@ -1,6 +1,10 @@
 .header {
   padding: 12px 0;
-  background: rgba(255, 255, 255, 0.90);
+  background: white;
+  position: fixed;
+  width: 100%;
+  z-index: 588;
+  opacity: 100;
   &__nav {
     display: flex;
     align-items: center;

@@ -67,6 +67,7 @@ const authSlice = createSlice({
         logout: (state) => {
             state.user = null
             toast('Вы вышли из аккаунта!')
+            localStorage.removeItem('token')
         }
     },
     extraReducers: (builder) => {

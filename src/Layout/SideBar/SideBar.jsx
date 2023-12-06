@@ -35,9 +35,9 @@ const SideBarLink = ({to, Icon1, Icon2, text, span}) => {
 const SideBar = () => {
     return (
         <div className='sidebar'>
-            <div className="sidebar__logo">
-                <img src={sidebarLogo} alt="logo"/>
-            </div>
+            {/*<div className="sidebar__logo">*/}
+            {/*    <img src={sidebarLogo} alt="logo"/>*/}
+            {/*</div>*/}
 
             <SideBarLink text='Главная' Icon1={IoHome} Icon2={IoHomeOutline} to='/'/>
             <SideBarLink text='Подписки' Icon1={HiMiniUsers} Icon2={HiOutlineUsers} to='/subscriptions'/>

@@ -7,7 +7,7 @@
   padding-top: 5px;
   overflow: auto;
   padding-bottom: 24px;
-  height:  calc(100vh - 48px);
+  height:  calc(100vh - 80px - 48px);
   border-right: 1px solid #ABA8AD;
   &::-webkit-scrollbar {
     width: 5px;
@@ -106,9 +106,9 @@
   width: 65%;
   background: #FFFFFF;
   border-radius: 0 10px 10px 0;
-  padding: 5px 10px 0;
+  padding: 5px 10px;
   overflow: auto;
-  height:  calc(100vh - 48px);
+  height:  calc(100vh - 80px - 48px);
   position: relative;
   &::-webkit-scrollbar {
     width: 5px;
