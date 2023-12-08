@@ -21,4 +21,9 @@
       color: #FFFFFF;
     }
   }
+  &.mes {
+    padding: 24px;
+    border-top: 1px solid var(--Gray-light, #DAD4E4);
+    background: #FFFFFF;
+  }
 }

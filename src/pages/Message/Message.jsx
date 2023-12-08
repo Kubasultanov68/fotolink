@@ -75,7 +75,7 @@ const Message = () => {
                     </span>
                 </div>
 
-                <div className='addcomment'>
+                <div className='addcomment mes'>
                     <input type="text" className="addcomment__input" placeholder='Введите поисковый запрос'/>
                     <button className="addcomment__btn">
                         <AiOutlineSend />

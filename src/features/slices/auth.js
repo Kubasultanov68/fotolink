@@ -85,6 +85,9 @@ const authSlice = createSlice({
             })
             .addCase(register.rejected, (state, {payload}) => {
                 state.isLoading = false
+                if (payload.message === "Network Error") {
+                    toast.error('Ошибка соединение с сервером!')
+                }
             })
 
             .addCase(login.pending, (state, {payload}) => {
@@ -98,6 +101,9 @@ const authSlice = createSlice({
             })
             .addCase(login.rejected, (state, {payload}) => {
                 state.isLoading = false
+                if (payload.message === "Network Error") {
+                    toast.error('Ошибка соединение с сервером!')
+                }
             })
 
             .addCase(reset.pending, (state) => {
