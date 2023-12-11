@@ -7,24 +7,24 @@ import PostAddComment from "./PostAddComment/PostAddComment";
 import {MdArrowBack} from "react-icons/md";
 import {generateFakeData} from "../UserProfile/UserProfile";
 
-const PostAuthor = () => {
+const PostAuthor = ({post, user}) => {
     return (
         <div className='post__author'>
             <Avatar sx={{
                 width: '60px',
                 height: '60px'
-            }}/>
+            }} src={!user ? '' : user?.avatar}/>
             <div className="post__author-info">
                 <div className="post__author-column">
                     <h5 className="post__author-name">
-                        Denis_Armed
+                        {user ? user.userName : 'Denis_Armed'}
                     </h5>
                     <p className="post__author-city">
                         MOSCOW
                     </p>
                 </div>
                 <p className="post__author-time">
-                    Сегодня в 6:30
+                    Сегодня в {post ? post.updatedAt : '6:30'}
                 </p>
             </div>
         </div>
@@ -45,9 +45,11 @@ const PostBtn = ({Icon, num, open, setOpen}) => {
   )
 };
 
-const Post = ({modal}) => {
+const Post = ({modal, post}) => {
 
     const [isCommentOpen, setIsCommentOpen] =  React.useState(false)
+
+    console.log(post)
 
     return (
         <div className='post'>
@@ -62,7 +64,7 @@ const Post = ({modal}) => {
                 </div>
             )}
             <div className='post__top'>
-                <PostAuthor/>
+                <PostAuthor post={!post ? false : post} user={!post ? false : post.user}/>
                 <div>
                     <IconButton className="post__saved">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -72,40 +74,64 @@ const Post = ({modal}) => {
                 </div>
             </div>
             <div className='post__content'>
-                {generateFakeData(4).map((_, index) => (
+                {!post ? generateFakeData(4).map((_, index) => (
                     <img key={index}
                          src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg'
                          alt=""/>
+                )) : post.images.map((item, index) => (
+                    <img key={index} src={item} alt={`img-${index}`} />
                 ))}
             </div>
             <div className="post__tags">
-                <button className="post__tags-item">
-                    #cвадьба
-                </button>
-                <button className="post__tags-item">
-                    #cвадьба
-                </button>
-                <button className="post__tags-item">
-                    #cвадьба
-                </button>
-                <button className="post__tags-item">
-                    #cвадьба
-                </button>
-                <button className="post__tags-item">
-                    #cвадьба
-                </button>
+                {
+                    !post ? (
+                            <>
+                                <button className="post__tags-item">
+                                    #cвадьба
+                                </button>
+                                <button className="post__tags-item">
+                                    #cвадьба
+                                </button>
+                                <button className="post__tags-item">
+                                    #cвадьба
+                                </button>
+                                <button className="post__tags-item">
+                                    #cвадьба
+                                </button>
+                                <button className="post__tags-item">
+                                    #cвадьба
+                                </button>
+                            </>
+                    ) :
+                        post.tags.map((item, index) => (
+                    <button className="post__tags-item" key={index}>
+                {item}
+                    </button>
+                    ))
+                }
             </div>
             <p className="post__text">
-                Обожаю первые серии со свадеб! Они всегда такие долгожданные и разные! Сегодня хочу поделиться фотографиями со свадьбы Тани и Юры
-                <br/>
-                <br/>
-                Как жалко, что в посте можно выложить только 10 штук, еле еле вместила, потому что серия далеко не на один пост. Все фотографии клевые и яркие!
+                {
+                    !post ? (
+                        <>
+                            Обожаю первые серии со свадеб! Они всегда такие долгожданные и разные! Сегодня хочу поделиться фотографиями со свадьбы Тани и Юры
+                            <br/>
+                            <br/>
+                            Как жалко, что в посте можно выложить только 10 штук, еле еле вместила, потому что серия далеко не на один пост. Все фотографии клевые и яркие!
+                        </>
+                    ) : (
+                        <>
+                            {post.desc}
+                        </>
+                    )
+                }
+
             </p>
             <div className="post__bottom">
                 <div className="post__btns">
-                    <PostBtn Icon={FaRegHeart} num={12}/>
+                    <PostBtn Icon={FaRegHeart} num={!post ? 12 : post.likes.length}/>
                     <PostBtn Icon={isCommentOpen ? FaCommentDots : FaRegComment} num={12} open={isCommentOpen} setOpen={setIsCommentOpen}/>
-                    <PostBtn Icon={FaRegBookmark} num={12}/>
+                    <PostBtn Icon={FaRegBookmark} num={!post ? 12 : post.bookmarks.length}/>
                 </div>
                 <p className="post__spec">
                     <span>
