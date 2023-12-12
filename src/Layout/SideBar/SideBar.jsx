@@ -1,7 +1,7 @@
 import React from 'react';
 import sidebarLogo from '../../assets/sidebarLogo.svg';
 import {NavLink, useLocation} from "react-router-dom";
-import {IoHomeOutline, IoSettings, IoSettingsOutline} from "react-icons/io5";
+import {IoCreateOutline, IoHomeOutline, IoSettings, IoSettingsOutline} from "react-icons/io5";
 import { IoHome } from "react-icons/io5";
 import {HiMiniUsers, HiOutlineUsers} from "react-icons/hi2";
 import {FiMessageCircle} from "react-icons/fi";
@@ -68,9 +68,11 @@ const SideBar = () => {
             <SideBarLink text='Поиск' Icon2={CiSearch} Icon1={FaSearch} to='/search'/>
             <SideBarLink text='Мой профиль' Icon2={FaRegUser} Icon1={FaUser} to='/profile'/>
             <SideBarLink text='Настройки' Icon2={IoSettingsOutline} Icon1={IoSettings} to='/settings'/>
-            <button onClick={() => {
+            <button className='sidebar__link' onClick={() => {
                 MhandleOpen()
-            }}> Создать пост</button>
+            }}>
+                <IoCreateOutline className='sidebar__link-icon'/>
+                Создать пост</button>
             <CreatePost MhandleClose={MhandleClose} Mopen={Mopen}/>
         </div>
     );

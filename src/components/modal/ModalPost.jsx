@@ -24,7 +24,7 @@ const Modal = ({ post, onClose }) => {
                     Назад
 
                 </span>
-                <Post/>
+                <Post post={post}/>
             </div>
         </div>
     );
